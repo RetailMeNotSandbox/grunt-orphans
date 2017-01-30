@@ -97,7 +97,7 @@ function orphansTaskMethod(grunt) {
  *   baseDir.
  */
 function getAllFilesInTree(files, baseDir) {
-	_.chain(files)
+	return _.chain(files)
 	.map(f=>f.src)
 	.flatten()
 	.map(f=>f.replace(baseDir, ''))
