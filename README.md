@@ -63,7 +63,6 @@ orphans: {
 # create an orphaned file in your scripts directory
 $ touch scripts/orphan.js
 $ grunt orphans
-$ grunt orphans
 Running "orphans:main" (orphans) task
 >> Oprhaned file: scripts/orphan.js
 Warning: Found 1 orphaned files. Use --force to continue.
