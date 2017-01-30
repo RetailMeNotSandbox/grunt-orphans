@@ -1,6 +1,6 @@
 {
   "name": "@retailmenot/grunt-orphans",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Grunt multi-task for discovering orphaned files in a JS directory.",
   "main": "tasks/grunt-orphans.js",
   "scripts": {
