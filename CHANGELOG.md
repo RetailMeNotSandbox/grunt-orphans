@@ -1,3 +1,4 @@
+# v1.0.2 - **2017-01-30**
 - Allow `entryFileGlob` to be an array or a string
 
 # v1.0.1 - **2017-01-30**
