@@ -1,0 +1,7 @@
+*.swp
+*.swo
+*.ignore
+
+node_modules
+docs
+.nyc_output

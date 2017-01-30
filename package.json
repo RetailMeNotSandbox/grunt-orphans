@@ -1,0 +1,41 @@
+{
+  "name": "@retailmenot/grunt-orphans",
+  "version": "0.0.0",
+  "description": "Grunt multi-task for discovering orphaned files in a JS directory.",
+  "main": "tasks/grunt-orphans.js",
+  "scripts": {
+    "quality": "grunt audit lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RetailMeNotSandbox/grunt-hooks.git"
+  },
+  "author": "RetailMeNot Engineering",
+  "contributors": [
+    "Luke Zilioli <lzilioli@rmn.com>"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@retailmenot/core-ui-editorconfig": "^1.0.2",
+    "@retailmenot/core-ui-eslintrc": "^5.0.0",
+    "@retailmenot/grunt-hooks": "^1.0.0",
+    "eslint": "^3.14.1",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-eslint": "^19.0.0",
+    "grunt-jsdoc": "^2.1.0",
+    "grunt-jsinspect": "^2.0.0",
+    "grunt-release": "^0.14.0",
+    "grunt-todo": "^0.5.0",
+    "shared-grunt-config": "^5.0.0"
+  },
+  "dependencies": {
+    "assert": "^1.4.1",
+    "lodash": "^4.17.4",
+    "madge": "^1.5.0"
+  },
+  "keywords": [
+    "grunt"
+  ]
+}
