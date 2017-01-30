@@ -21,7 +21,10 @@ function orphansTaskMethod(grunt) {
 		whitelist: []
 	});
 
-	assert(_.isString(options.entryFileGlob), 'options.entryFileGlob must be a string');
+	assert(
+		_.isArray(options.entryFileGlob) || _.isString(options.entryFileGlob),
+		'options.entryFileGlob must be a string or an array'
+	);
 	assert(_.isArray(options.whitelist), 'options.whitelist must be an array');
 
 	// Generate the whitelist as a list of files matching globs in
