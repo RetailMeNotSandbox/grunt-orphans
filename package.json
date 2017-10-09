@@ -12,7 +12,8 @@
   },
   "author": "RetailMeNot Engineering",
   "contributors": [
-    "Luke Zilioli <lzilioli@rmn.com>"
+    "Luke Zilioli <lzilioli@rmn.com>",
+    "Ray Pierce <ray@digitalpierce.com>"
   ],
   "license": "MIT",
   "devDependencies": {
