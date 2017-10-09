@@ -30,8 +30,8 @@ function orphansTaskMethod(grunt) {
 	// Generate the whitelist as a list of files matching globs in
 	// options.whitelist relative to options.baseDir
 	var whitelist = _.chain(grunt.file.expand(options.whitelist))
-	.map(f=>f.replace(options.baseDir, '').substr(1))
-	.value();
+		.map(f=>f.replace(options.baseDir, '').substr(1))
+		.value();
 
 	// Convert this.files to a flat array of filenames relative to
 	// options.baseDir
@@ -56,36 +56,36 @@ function orphansTaskMethod(grunt) {
 
 	// Call to madge to generate the dependency tree for allEntryFiles
 	madge(allEntryFiles, madgeOpts)
-	.then(res=>{
-		var tree = res.obj();
-		_.each(tree, (deps, key)=>{
-			_.each(deps, d=>{
-				filesByModuleName[d] = true;
+		.then(res=>{
+			var tree = res.obj();
+			_.each(tree, (deps, key)=>{
+				_.each(deps, d=>{
+					filesByModuleName[d] = true;
+				});
 			});
-		});
-	})
-	.then(function identifyAndLogOrphans() {
-		var allEntries = Object.keys(filesByModuleName);
-		var orphanedFiles = _.chain(allEntries)
-		.filter(e=>{
-			return filesByModuleName[e] === false &&
-				!_.some(whitelist, allowed=>e === allowed);
 		})
-		.value();
-		_.each(orphanedFiles, f=>{
-			grunt.log.warn(
-				'Oprhaned file:',
-				path.join(options.baseDir, f)
-			);
-		});
-		if (orphanedFiles.length) {
-			grunt.fail.warn(
-				'Found ' + orphanedFiles.length + ' orphaned files.'
-			);
-		}
-		done();
-	})
-	.catch(grunt.log.error);
+		.then(function identifyAndLogOrphans() {
+			var allEntries = Object.keys(filesByModuleName);
+			var orphanedFiles = _.chain(allEntries)
+				.filter(e=>{
+					return filesByModuleName[e] === false &&
+				!_.some(whitelist, allowed=>e === allowed);
+				})
+				.value();
+			_.each(orphanedFiles, f=>{
+				grunt.log.warn(
+					'Oprhaned file:',
+					path.join(options.baseDir, f)
+				);
+			});
+			if (orphanedFiles.length) {
+				grunt.fail.warn(
+					'Found ' + orphanedFiles.length + ' orphaned files.'
+				);
+			}
+			done();
+		})
+		.catch(grunt.log.error);
 }
 
 /**
@@ -101,10 +101,10 @@ function orphansTaskMethod(grunt) {
  */
 function getAllFilesInTree(files, baseDir) {
 	return _.chain(files)
-	.map(f=>f.src)
-	.flatten()
-	.map(f=>f.replace(baseDir, ''))
-	.value();
+		.map(f=>f.src)
+		.flatten()
+		.map(f=>f.replace(baseDir, ''))
+		.value();
 }
 
 /**
