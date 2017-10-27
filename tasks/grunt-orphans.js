@@ -5,6 +5,8 @@ var assert = require('assert');
 var path = require('path');
 var madge = require('madge');
 
+var debug = require('debug')('orphans');
+
 module.exports = function (grunt) {
 	var description = 'Quickly identify JS files that are no longer consumed by your build.';
 	grunt.registerMultiTask('orphans', description, _.partial(orphansTaskMethod, grunt));
@@ -63,13 +65,16 @@ function orphansTaskMethod(grunt) {
 					filesByModuleName[d] = true;
 				});
 			});
+
+			// The fact that these files are being skipped is the heart of the issue
+			debug('got warnings from madge', res.warnings());
 		})
 		.then(function identifyAndLogOrphans() {
 			var allEntries = Object.keys(filesByModuleName);
 			var orphanedFiles = _.chain(allEntries)
 				.filter(e=>{
 					return filesByModuleName[e] === false &&
-				!_.some(whitelist, allowed=>e === allowed);
+						!_.some(whitelist, allowed=>e === allowed);
 				})
 				.value();
 			_.each(orphanedFiles, f=>{
@@ -122,11 +127,7 @@ function getMadgeOpts(grunt, options) {
 	var madgeOpts = {
 		baseDir: options.baseDir,
 		webpackConfig: options.webpackConfig,
-		showFileExtension: true
+		fileExtensions: options.fileExtensions
 	};
-
-	if (options.fileExtensions) {
-		madgeOpts.fileExtensions = grunt.config(options.fileExtensions);
-	}
 	return madgeOpts;
 }
